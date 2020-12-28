@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RuleActivity">
+
+    <ImageView
+        android:id="@+id/iv_logo4"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sub4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_sub4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="ICU"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo4"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo4"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo4" />
+
+    <TextView
+        android:id="@+id/tv_rulemain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:layout_marginBottom="64dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="시험을 시작합니다."
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_rulesub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_rulesub"
+        android:layout_width="314dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="시험을 응시하기 전에 수험자 유의사항을 꼭
+        \n읽어주시기바랍니다"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rulemain" />
+
+    <CheckBox
+        android:id="@+id/cb_rulesub1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="9dp"
+        android:text="수험자 유의사항을 숙지하였습니다."
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_rulesub2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_rulesub" />
+
+    <CheckBox
+        android:id="@+id/cb_rulesub2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="245dp"
+        android:text="본 시험의 부정행위에 대하여 숙지하였\n습니다."
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_rulesub1" />
+
+    <Button
+        android:id="@+id/btn_ruleconfirm"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:text="확인하였습니다."
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:background="@drawable/button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

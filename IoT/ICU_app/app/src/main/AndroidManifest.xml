@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.facedetector">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front.autofocus"
+        android:required="false" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FaceDetector"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".testingDetecting"></activity>
+        <activity android:name=".GetRequest" />
+        <activity android:name=".CustomDialog7" />
+        <activity android:name=".CustomActivity" />
+        <activity android:name=".CustomDialog6" />
+        <activity
+            android:name=".CustomDialog5"
+            android:label="@string/title_activity_custom_dialog5"
+            android:theme="@style/Theme.FaceDetector.NoActionBar" />
+        <activity android:name=".CustomDialog4" />
+        <activity android:name=".CustomDialog3" />
+        <activity android:name=".WatchDetectorActivity" />
+        <activity android:name=".CheckFace" />
+        <activity android:name=".ExamBeforeActivity" />
+        <activity android:name=".EarActivity" />
+        <activity
+            android:name=".Humandetector"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".CustomDialog"
+            tools:ignore="Instantiatable" />
+        <activity android:name=".WristActivity" />
+        <activity android:name=".Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RuleDetailActivity2" />
+        <activity android:name=".RuleActivity" />
+        <activity android:name=".RuleDetailActivity1" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".QuitActivity" />
+        <activity android:name=".PersonActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FaceActivity" />
+        <activity android:name=".DeskActivity" />
+        <activity
+            android:name=".FaceDetector"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".DetectorActivity"
+            android:label="@string/tfe_od_app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
+    </application>
+
+</manifest>

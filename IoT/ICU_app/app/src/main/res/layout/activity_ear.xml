@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EarActivity"
+    >
+
+    <TextView
+        android:id="@+id/tv_earvedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="이어폰 검사"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lt_ear" />
+
+    <Button
+        android:id="@+id/btn_capture"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="검사 시작"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_eardetail"
+        android:layout_width="313dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="1.         세로모드로 검사를 시작합니다."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_eardetail2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_earvedio"
+        app:layout_constraintVertical_bias="0.863" />
+
+    <TextView
+        android:id="@+id/tv_eardetail3"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="70dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="3.검사가 완료되면       다음단계로 이동합니다."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_eardetail4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_next4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="28dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_eardetail3"
+        app:layout_constraintEnd_toEndOf="@+id/tv_eardetail3"
+        app:layout_constraintHorizontal_bias="0.436"
+        app:layout_constraintStart_toStartOf="@+id/tv_eardetail3"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="arrow.json"
+        app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/tv_eardetail2"
+        android:layout_width="313dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="2.         카메라로 귀를 비춥니다."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/lt_next4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_eardetail4"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="41dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="※귀에 이어폰을 착용한 경우, 불이익을 받을
+    \n      수 있습니다."
+        android:textColor="#F80505"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_capture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_logo4"
+        android:layout_width="50dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sub4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_sub4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="ICU"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo4"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo4"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo4" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_ear"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="98dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="earphones.json"
+        app:lottie_loop="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/portrait"
+        android:layout_width="39dp"
+        android:layout_height="35dp"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_eardetail"
+        app:layout_constraintEnd_toEndOf="@+id/tv_eardetail"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toStartOf="@+id/tv_eardetail"
+        app:layout_constraintTop_toTopOf="@+id/tv_eardetail"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="11754-landscape-to-portrait-view.json"
+        app:lottie_loop="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/selfie"
+        android:layout_width="38dp"
+        android:layout_height="42dp"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_eardetail2"
+        app:layout_constraintEnd_toEndOf="@+id/tv_eardetail2"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="@+id/tv_eardetail2"
+        app:layout_constraintTop_toTopOf="@+id/tv_eardetail2"
+        app:layout_constraintVertical_bias="0.857"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="24835-selfie.json"
+        app:lottie_loop="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

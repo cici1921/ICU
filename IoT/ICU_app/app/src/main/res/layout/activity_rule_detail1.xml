@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RuleDetailActivity1">
+
+    <ImageView
+        android:id="@+id/iv_logo4"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sub4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+
+    <TextView
+        android:id="@+id/tv_sub4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="ICU"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo4"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo4"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo4" />
+
+    <TextView
+        android:id="@+id/tv_detailmain1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="수험자 유의사항"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sub4" />
+
+    <TextView
+        android:id="@+id/tv_ruledetail1"
+        android:layout_width="313dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="1. 시험시간내에 문제를 풀어야 합니다."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailmain1" />
+
+    <TextView
+        android:id="@+id/tv_ruledetail2"
+        android:layout_width="313dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="2. 시험시간내에 시험을 끝나신 경우, '시험
+        \n    종료'버튼으로 종료하실 수 있으며, 재응시
+        \n    불가합니다."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ruledetail1" />
+
+    <TextView
+        android:id="@+id/tv_ruledetail3"
+        android:layout_width="313dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="3.문제에 이의제기가 있을 경우, 2020년 12월
+        \n   31일까지 공식사이트 게시판에 올려주시기
+        \n   바랍니다"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ruledetail2" />
+
+    <Button
+        android:id="@+id/btn_detailconfirm1"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

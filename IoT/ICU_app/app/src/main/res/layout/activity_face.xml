@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FaceActivity"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_facevedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="본인확인"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lt_person" />
+
+    <TextView
+        android:id="@+id/tv_facedetail2"
+        android:layout_width="313dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="2.        화면을 정면으로 응시합니다."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_facedetail3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_facedetail"
+        app:layout_constraintVertical_bias="0.471" />
+
+    <TextView
+        android:id="@+id/tv_facedetail3"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="76dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="3.얼굴이      인식되면
+      다음단계로 이동됩니다.
+        \n\n※수험사진과 다를 경우 시험에 응시할 수 없습니다."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_facedetail4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_facedetail4"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="33dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="※수험사진과 다를 경우 시험에 응시할 수 없습니다."
+        android:textColor="#F80202"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_capture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_facedetail"
+        android:layout_width="313dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="1.         가로모드로 전환합니다."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_facevedio" />
+
+    <Button
+        android:id="@+id/btn_capture"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="촬영"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_logo4"
+        android:layout_width="50dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_sub4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_sub4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="296dp"
+        android:fontFamily="@font/binggrae_melona_bold"
+        android:text="ICU"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo4"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_person"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="98dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="person.json"
+        app:lottie_loop="false" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_camera3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/lt_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.331"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lt_arrow"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="face_scanner.json"
+        app:lottie_loop="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/selfie"
+        android:layout_width="38dp"
+        android:layout_height="42dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="55dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_facedetail2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_facedetail2"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="24835-selfie.json"
+        app:lottie_loop="true" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_arrow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="136dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/tv_facedetail3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/selfie"
+        app:layout_constraintTop_toBottomOf="@+id/tv_facevedio"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="arrow.json"
+        app:lottie_loop="false" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/phone"
+        android:layout_width="39dp"
+        android:layout_height="35dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_facedetail"
+        app:layout_constraintEnd_toEndOf="@+id/selfie"
+        app:layout_constraintTop_toTopOf="@+id/tv_facedetail"
+        app:layout_constraintVertical_bias="1.0"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="15195-smartphone-screen-orientation.json"
+        app:lottie_loop="true" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
