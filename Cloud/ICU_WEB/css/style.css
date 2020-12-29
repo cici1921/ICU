@@ -1,0 +1,31 @@
+#user_option{
+    border-radius: 15px;
+    color: rgba(93,93,93,1);
+    font-weight:bold;
+    font-size:60%;
+    padding:5px;
+    /* box-shadow: rgba(66, 66, 66, 0); */
+}
+.card-body-graph{
+    padding:30px;
+    min-height:250px;
+}
+
+#use {
+    
+    height: 200px;
+    object-fit: fill;
+  }
+
+
+#ctr {
+    justify-content: center;
+    float: left;
+    width: 100px;
+    margin: 0auto;
+}
+
+
+
+
+

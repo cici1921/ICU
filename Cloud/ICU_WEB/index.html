@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>ICU</title>
+
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/business-frontpage.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a href="./"><img src="./img/haedicu.png" style="width: 220px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <!--<a href="#"><img src="./img/msg.png" style="width:125px; margin-top: 5px;" ></a>-->
+              <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item">
+            <a href="#"><img src="./img/logout.png" style="width:125px; margin-top: 5px;" onclick="logout();"></a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary py-5 mb-5" style="
+  padding-bottom: 1rem!important;
+  padding-top: 1rem!important;
+  background-color: #45B8AC!important;  ">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <img src="./img/REALICU.png" style="width: 500px;">
+          <!--<h1 class="display-4 text-white mt-5 mb-2">ICU 관리자 페이지</h1>-->
+          
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row" style="margin-bottom: 15px; margin-left: 15px;">
+      <h2><select name='user_option' id='user_option' onchange="change_select()"></select></h2>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6 mb-5">
+<!--1216-->
+        <div class="col-xl-12">
+          <div class="card mb-4">
+            <div class="card-header">
+              <img src="./img/now_cheat_1.png" style="width:150px; ">
+            </div>
+          <div class="card-body-graph"><canvas id="myBarChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+<!--1216-->
+  <div class="col-md-6 mb-5">
+    
+    <!--1216-->
+    <div class="col-xl-12">
+      <div class="card mb-4">
+        <div class="card-header">
+          <img src="./img/sum_cheat_1.png" style="width:150px; ">
+        </div>
+          <div class="card-body-graph" id="pie-body">
+            <div class="chart-pie pt-4 pb-2">
+              <canvas id="myPieChart"></canvas>
+            </div>
+              <div class="mt-4 text-center small">
+                <span class="mr-2">
+                  <i class="fas fa-circle text-primary"></i> 이어폰
+                </span>
+                <span class="mr-2">
+                  <i class="fas fa-circle text-success"></i> 시계착용
+                </span>
+                <span class="mr-2">
+                  <i class="fas fa-circle text-info"></i> 주변사람
+                </span>
+                <span class="mr-2">
+                  <i class="fas fa-circle text-info"></i> 손목위치
+                </span>
+                <span class="mr-2">
+                  <i class="fas fa-circle text-info"></i> 책
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+      <img src="./img/img_list.png" style="width:450px; height:75px; margin-bottom:10px;">
+    </div>
+    <div class="row" id="image_list">
+      
+
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer style="text-align: center;" >
+      <p>Copyright &copy; ICU 2020</p>
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+  <script src="assets/demo/chart-bar-demo.js"></script>
+  <script src="assets/demo/chart-pie-demo.js"></script>
+  
+  
+
+  <script>
+    
+    function isLogin() {
+      if (localStorage.getItem('token')!='200') {
+        
+        window.location.href = "login.html";
+      }
+      console.log(localStorage.getItem('token'))
+    }
+    isLogin();
+    function logout(){
+      localStorage.clear();
+      window.location.href = "login.html";
+
+    }
+    // 드랍다운 리스트에 db응시자수만큼 추가
+    var temp_var = new XMLHttpRequest();
+    temp_var.open("GET", "https://0jrsvc8y79.execute-api.us-east-1.amazonaws.com/icu-rest-index");
+    temp_var.send();
+    temp_var.onreadystatechange = function () {
+
+      if (temp_var.readyState !== XMLHttpRequest.DONE) return;
+      if (temp_var.status === 200) {
+        //console.log(temp_var.responseText);
+        // Deserializing (String → Object)
+        responseObject = JSON.parse(temp_var.responseText);
+        // JSON → HTML String
+        var count = 0;
+        
+        let tempContent = `<option value="*">응시자 선택</option>`;
+        responseObject.forEach((responseObject) => {
+
+          
+          tempContent+=`
+                      <option value=${responseObject.user_name} label=${responseObject.user_name}>${responseObject.user_name}</option>
+                      `;
+
+        });
+        //console.log(newContent);
+        
+        document.getElementById("user_option").innerHTML = tempContent;
+      } else {
+        console.log(`[${temp_var.status}] : ${temp_var.statusText}`);
+      }
+    };
+
+    // 이미지 div에 최근 부정행위 로드
+    var images = new XMLHttpRequest();
+        images.open("GET", "https://29bjyftjhi.execute-api.us-east-1.amazonaws.com/icu-rest-index-image");
+        images.send();
+        images.onreadystatechange = function () {
+
+          if (images.readyState !== XMLHttpRequest.DONE) return;
+          if (images.status === 200) {
+            //console.log(images.responseText);
+            // Deserializing (String → Object)
+            imageObject = JSON.parse(images.responseText);
+            // JSON → HTML String
+            let imageContent = '';
+            
+            imageObject.forEach((imageObject) => {
+              let cheat=imageObject.cheat_num;
+              let cheater;
+              switch (cheat){
+                case '1':
+                  cheater="이어폰 착용";
+                  break;
+                case '2':
+                  cheater="시계 착용";
+                  break;
+                case '3':
+                  cheater="주변 사람 인식";
+                  break;
+                case '4':
+                  cheater="손목 위치";
+                  break;
+                case '5':
+                  cheater="책 인식";
+                  break;
+                default:
+                  alert('error');
+              }
+              imageContent +=
+                            `
+                            <div class="col-md-4 mb-5" >
+                              <div class="card h-100">
+                                <div id="bye">
+                                <img class="card-img-top" src="${imageObject.img_url}" alt="" id="use">
+                                </div>
+                                <div class="card-body">
+                                  <h4 class="card-title">${imageObject.tester_num}번의 부정행위</h4>
+                                  <p class="card-text">${imageObject.cheat_time}<br>${cheater}</p>
+                                </div>
+                              </div>
+                            </div>
+                            `;
+
+            });
+
+            document.getElementById("image_list").innerHTML = imageContent;
+          } else {
+            console.log(`[${images.status}] : ${images.statusText}`);
+          }
+        };
+
+  
+
+/*드랍다운 변화시 div 이미지 변경*/ 
+function change_select(){
+    var op = document.getElementById("user_option");
+    var sel_val=op.options[op.selectedIndex].value;
+    
+    var my_url="https://nmda822ird.execute-api.us-east-1.amazonaws.com/dev/icu-func-user-image?table=cheat_list&test_num="+String(sel_val)
+ 
+    console.log(my_url)
+    var click_var = new XMLHttpRequest();
+    click_var.open("GET", my_url);
+    click_var.send();
+    click_var.onreadystatechange = function () {
+      if (click_var.readyState !== XMLHttpRequest.DONE) return;
+      if (click_var.status === 200) {
+        let newContent='';
+        let m_url="https://icu-tester-face-s3.s3.amazonaws.com/userface/"+String(sel_val)+".jpg"
+        if(sel_val!='*')
+        {newContent=`                            
+                            <div class="col-md-4 mb-5" >
+                              <div class="card h-100">
+                                <div id="bye">
+                                <img class="card-img-top"  src="${m_url}" alt="" id="use">
+                                </div>
+                                <div class="card-body">
+                                  <h4 class="card-title">${sel_val}번  응시자</h4>
+                                  <p class="card-text">응시자 안면 사진</p>
+                                </div>
+                              </div>
+                            </div>`;
+        }
+        resp = JSON.parse(click_var.responseText);
+        
+        resp.forEach((resp) => {
+          let cheat=resp.cheat_num;
+              let cheater;
+              switch (cheat){
+                case '1':
+                  cheater="이어폰 착용";
+                  break;
+                case '2':
+                  cheater="시계 착용";
+                  break;
+                case '3':
+                  cheater="주변 사람 인식";
+                  break;
+                case '4':
+                  cheater="손목 위치";
+                  break;
+                case '5':
+                  cheater="책 인식";
+                  break;
+                default:
+                  alert('error');
+              }
+          newContent += 
+                            `
+                            <div class="col-md-4 mb-5" >
+                              <div class="card h-100" >
+                                <div id="bye">
+                                <img class="card-img-top" src="${resp.img_url}" alt="" id="use"  >
+                                </div>
+                                <div class="card-body">
+                                  <h4 class="card-title">${resp.test_num}번의 부정행위</h4>
+                                  <p class="card-text">${resp.cheat_time}<br>${cheater}</p>
+                                </div>
+                              </div>
+                            </div>
+                            `;
+        });
+        document.getElementById("image_list").innerHTML = newContent;
+
+
+      } else {
+        console.log(`[${click_var.status}] : ${click_var.statusText}`);
+      }
+    
+  
+  }
+  
+  var personal_arr = [];
+  var per_pie_var = new XMLHttpRequest();
+
+    personal_url="https://pn6taa7dj4.execute-api.us-east-1.amazonaws.com/dev/icu-personal-data-for-pie?table=cheat_list&test_num="+String(sel_val)
+
+    per_pie_var.open("GET", personal_url);
+    per_pie_var.send();
+    per_pie_var.onreadystatechange = function () {
+    var temp_sum=0;
+      if (per_pie_var.readyState !== XMLHttpRequest.DONE) return;
+      if (per_pie_var.status === 200) {
+        per_obj = JSON.parse(per_pie_var.responseText);
+        if(per_obj=='none'){
+                  
+
+
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ["없음"],
+            datasets: [{
+              data: [1],
+              backgroundColor: ['#000000'],
+              hoverBackgroundColor: ['#000000'],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              borderColor: '#dddfeb',
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              caretPadding: 10,
+            },
+            legend: {
+              display: false
+            },
+            cutoutPercentage: 80,
+          },
+        });
+        return;
+        }
+
+
+        var ctx = document.getElementById("myPieChart");
+        var myPieChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: ["이어폰", "시계", "주변 사람","손목 위치","책"],
+            datasets: [{
+              data: [per_obj['1'], per_obj['2'], per_obj['3'], per_obj['4'], per_obj['5']],
+              backgroundColor: ['#00FF99', '#0099FF', '#00FFCC','#66FFFF','#e5eb76'],
+              hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+              hoverBorderColor: "rgba(234, 236, 244, 1)",
+            }],
+          },
+          options: {
+            maintainAspectRatio: false,
+            tooltips: {
+              backgroundColor: "rgb(255,255,255)",
+              bodyFontColor: "#858796",
+              borderColor: '#dddfeb',
+              borderWidth: 1,
+              xPadding: 15,
+              yPadding: 15,
+              displayColors: false,
+              caretPadding: 10,
+            },
+            legend: {
+              display: false
+            },
+            cutoutPercentage: 80,
+          },
+        });
+        
+
+      } else {
+        console.log(`[${per_pie_var.status}] : ${per_pie_var.statusText}`);
+      }
+    };
+
+
+
+
+  }
+
+
+
+
+
+
+
+  
+  /* 자동 div 새로고침*/
+  /*
+  playAlert = setInterval(function() {
+    
+  var ops = document.getElementById("user_option");
+  var my_val=ops.options[ops.selectedIndex].value;
+  if(my_val=='*'){
+    
+  var auto_images = new XMLHttpRequest();
+          auto_images.open("GET", "https://29bjyftjhi.execute-api.us-east-1.amazonaws.com/icu-rest-index-image");
+          auto_images.send();
+          auto_images.onreadystatechange = function () {
+
+          if (auto_images.readyState !== XMLHttpRequest.DONE) return;
+          if (auto_images.status === 200) {
+            
+            
+            autoObj = JSON.parse(auto_images.responseText);
+            // JSON → HTML String
+            let autoContent = '';
+            
+            autoObj.forEach((autoObj) => {
+              let cheat=autoObj.cheat_num;
+              let cheater;
+              switch (cheat){
+                case '1':
+                  cheater="이어폰 착용";
+                  break;
+                case '2':
+                  cheater="시계 착용";
+                  break;
+                case '3':
+                  cheater="주변 사람 인식";
+                  break;
+                case '4':
+                  cheater="손목 위치";
+                  break;
+                case '5':
+                  cheater="책 인식";
+                  break;
+                default:
+                  alert('error');
+              }
+              autoContent +=
+                            `
+                            <div class="col-md-4 mb-5" >
+                              <div class="card h-100">
+                                <div id="bye">
+                                <img class="card-img-top" src="${autoObj.img_url}" alt="" id="use">
+                                </div>
+                                <div class="card-body">
+                                  <h4 class="card-title">${autoObj.tester_num}번의 부정행위</h4>
+                                  <p class="card-text">${autoObj.cheat_time}<br>${cheater}</p>
+                                </div>
+                              </div>
+                            </div>
+                            `;
+
+            });
+
+            document.getElementById("image_list").innerHTML = autoContent;
+          } else {
+            console.log(`[${auto_images.status}] : ${auto_images.statusText}`);
+          }
+        };
+      }
+}, 10000);
+*/
+
+  </script>
+
+</body>
+
+</html>
